@@ -15,11 +15,13 @@ class _HomeState extends State<Home> {
     data = ModalRoute.of(context)!.settings.arguments as Map;
     print(data);
 
-    return SafeArea(
-      child: Scaffold(
-          backgroundColor: Colors.grey[200],
-          body: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      body: SafeArea(
+        child: Container(
+          //decoration: BoxDecoration(image: DecorationImage()),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 120, 0, 0),
             child: Column(
               children: <Widget>[
                 TextButton.icon(
@@ -39,12 +41,18 @@ class _HomeState extends State<Home> {
                     Text(
                       data['location'],
                       style: TextStyle(fontSize: 25),
-                    )
+                    ),
                   ],
-                )
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Text(data['time'], style: TextStyle(fontSize: 66.0))
               ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
