@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:worldtimeapp/pages/service/world_time.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -16,14 +18,13 @@ class _LoadingState extends State<Loading> {
 
     await instance.getTime();
 
-    Future.delayed(Duration(milliseconds: 900), () {
-      Navigator.pushReplacementNamed(context, '/home', arguments: {
-        'location': instance.location,
-        'flag': instance.flag,
-        'time': instance.time,
-        'isdaytime': instance.isDayTime,
-      });
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      'location': instance.location,
+      'flag': instance.flag,
+      'time': instance.time,
+      'isdaytime': instance.isDayTime,
     });
+    ;
   }
 
   @override
