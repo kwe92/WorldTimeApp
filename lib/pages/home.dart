@@ -14,7 +14,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    data = ModalRoute.of(context)!.settings.arguments as Map;
+    data = data.isNotEmpty
+        ? data
+        : ModalRoute.of(context)!.settings.arguments as Map;
     print('data variable: $data');
 
     var bgImage = data.values.elementAt(3)
@@ -48,9 +50,19 @@ class _HomeState extends State<Home> {
             child: Column(
               children: <Widget>[
                 TextButton.icon(
-                  onPressed: () {
+                  onPressed: () async {
                     // A Navigator class that
-                    Navigator.pushNamed(context, '/location');
+                    dynamic result =
+                        await Navigator.pushNamed(context, '/location');
+                    // setState trigers a rebuild
+                    setState(() {
+                      data = {
+                        'location': result['location'],
+                        'flag': result['flag'],
+                        'time': result['time'],
+                        'isDayTime': result['isDayTime'],
+                      };
+                    });
                   },
                   icon: Icon(
                     Icons.edit_location,
