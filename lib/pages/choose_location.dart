@@ -28,7 +28,9 @@ class _ChooseLocationState extends State<ChooseLocation> {
     WorldTime instance = worldTimeList[index];
     // use await to wait for the asynchronous function
     await instance.getTime();
-    print(instance);
+    print('New location: ${instance.location}');
+    print('New time: ${instance.time}');
+    print('New isDayTime: ${instance.isDayTime}');
 
     // pops context and pushs data
 
@@ -38,8 +40,6 @@ class _ChooseLocationState extends State<ChooseLocation> {
       'time': instance.time,
       'isdaytime': instance.isDayTime,
     });
-
-    print(instance.location);
   }
 
   @override

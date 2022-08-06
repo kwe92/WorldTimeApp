@@ -19,6 +19,8 @@ class _HomeState extends State<Home> {
         : ModalRoute.of(context)!.settings.arguments as Map;
     print('data variable: $data');
 
+    print('element 3 ${data.values.elementAt(3)}');
+
     var bgImage = data.values.elementAt(3)
         ? 'lib/assets/dayTime.webp'
         : 'lib/assets/nightTime.jpeg';
@@ -60,7 +62,7 @@ class _HomeState extends State<Home> {
                         'location': result['location'],
                         'flag': result['flag'],
                         'time': result['time'],
-                        'isDayTime': result['isDayTime'],
+                        'isdaytime': result['isdaytime'],
                       };
                     });
                   },

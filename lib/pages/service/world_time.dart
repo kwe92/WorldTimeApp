@@ -8,7 +8,7 @@ class WorldTime {
   late String time;
   String flag;
   String url;
-  late bool isDayTime;
+  late bool? isDayTime;
 
   WorldTime({required this.location, required this.flag, required this.url});
 
@@ -20,7 +20,7 @@ class WorldTime {
 
       Map timeData = jsonDecode(response.body);
 
-      print(timeData);
+      print('Time Data print: $timeData');
 
       DateTime now = DateTime.parse(timeData['datetime']);
 
